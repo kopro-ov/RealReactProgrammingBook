@@ -14,6 +14,17 @@ npm install @babel/core @babel/cli @babel/preset-react
 npx babel --watch src --out-dir . --presets @babel/preset-react
 
 */
+function LikeButton() {
+  const [liked, setLiked] = React.useState(false); //초깃값과 함께 컴포넌트의 상탯값을 정의 
+
+  const text = liked ? '좋아요 취소' : '좋아요'; //컴포넌트의 상탯값에 따라 동적으로 버튼의 문구 결정
+
+  return React.createElement( //createElement은 리액트 요소 반환
+  'button', {
+    onClick: () => setLiked(!liked)
+  }, text);
+}
+
 function Container() {
   const [count, setCount] = React.useState(0);
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(LikeButton, null), /*#__PURE__*/React.createElement("div", {
@@ -26,3 +37,6 @@ function Container() {
     onClick: () => setCount(count - 1)
   }, "\uAC10\uC18C")));
 }
+
+const domContainer = document.querySelector('#react-root');
+ReactDOM.render(React.createElement(Container), domContainer);
