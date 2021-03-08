@@ -5,18 +5,18 @@ const BoxCommon = styled.div`
     height: 50px;
     background-color: #aaa;
 `;
-const BoxBig = styled.div`
-    height: 200px;
+const BoxBig = styled(BoxCommon)`
+    width: 200px;
 `;
-const BoxSmall = styled.div`
-    height: 100px;
+const BoxSmall = styled(BoxCommon)`
+    width: 100px;
 `;
 
 function Box({size}) {
     if(size == 'big') {
         return <BoxBig>큰 박스</BoxBig>;
     } else {
-        return <BoxSmall>큰 박스</BoxSmall>;
+        return <BoxSmall>작은 박스</BoxSmall>;
     }
 }
 
