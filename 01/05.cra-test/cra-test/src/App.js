@@ -3,6 +3,7 @@ import './App.css';
 import smallImage from './small.jpeg';
 import bigImage from './big.jpeg';
 import TodoList from './TodoList'
+import './test.css';
 
 function App() {
   
