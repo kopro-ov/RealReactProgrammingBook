@@ -5,6 +5,7 @@ import bigImage from './big.jpeg';
 import TodoList from './TodoList'
 
 function App() {
+  
   return (
     <div className="App">
       <TodoList />
@@ -27,6 +28,6 @@ function App() {
     </div>
   );
 }
-
+console.log(`NODE_ENV = ${process.env.NODE_ENV}`);
 export default App;
 
