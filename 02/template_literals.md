@@ -25,7 +25,7 @@ age: ${age}
 score: ${score}`;
 ```
 ### 태그된 템플릿 리터럴
-태그된 템플릿 리터럴(tagged template literals)은 템플릿 리터럴을 확장한 기능이다.
+태그된 템플릿 리터럴(tagged template literals)은 템플릿 리터럴을 확장한 기능이다.<br>
 태그된 템플릿 리터럴은 함수로 정의된다.
 #### 태그된 템플릿 리터럴의 함수 구조
 ```javascript
@@ -37,8 +37,8 @@ const v2 = 20;
 const result = taggedFunc`a ${v1} b ${v2}`; //2
 console.log(result);
 ```
-taggedFunc 태그된 템플릿 리터럴 함수이다.
-taggedFunc 함수를 호출한다. 태그된 템플릿 리터럴 함수는 함수명과 함께 템플릿 리터럴을 붙여서 사용한다.
+taggedFunc 태그된 템플릿 리터럴 함수이다.<br>
+taggedFunc 함수를 호출한다. 태그된 템플릿 리터럴 함수는 함수명과 함께 템플릿 리터럴을 붙여서 사용한다.<br>
 함수명 오른쪽의 템플릿 리터럴을 파싱한 결과가 1의 strings, expressions 매개변수로 들어간다.
 #### 태그된 템플릿 리터럴의 파싱결과 분석
 ```javascript
