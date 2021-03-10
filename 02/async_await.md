@@ -118,5 +118,42 @@ async function getData() {
   const data2 = await p2;
 }
 ```
-
-
+#### Promise.all을 사용해서 병렬로 실행하기
+```javascript
+async function getData() {
+  const [data1, data2] = await Promise.all([asyncFunc1(), asyncFunc2()]);
+}
+```
+### 예외 처리 하기
+async await 함수 내부에서 발생하는 예외는 try catch로 처리하는게 좋다.
+#### 동기와 비동기 함수 모두 catch 문에서 처리
+```javascript
+async function getData() {
+  try {
+    await doAsync();
+    return doSync();
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+비동기와 동기 함수에서 발생하는 모든 예외가 catch문에서 처리된다.<br>
+만약 getData가 async await함수가 아니면 doAsync함수의 처리가 끝나는 시점을 알 수 없어 발생하는 예외는 catch에서 처리되지 않는다.
+### Thenable을 지원하는 async await
+Thenable는 프로미스처럼 동작하는 객체다. 프로미스가 ES6에 등장하기 이전부터 이미 여러 프로미스 라이브러리가 나왔다.<br>
+async await는 ES6의 프로미스가 아니더라도 then메서드를 가진 객체를 프로미스처럼 취급한다.
+이렇게 ES6의 프로미스가 아니더라도 then 메서드를 가진 객체를 Thenable이라고 부른다.
+#### async await 함수에서 Thenable을 사용한 예
+```javascript
+class ThenableExample {
+  then(resolve, reject) { //1
+    setTimeout(() => resolve(123, 1000));
+  }
+}
+async function asyncFunc() {
+  const result = await new ThenableExample(); //2
+  console.log(result);
+}
+```
+ThenableExample 클래스는 then메서드를 갖고 있으므로 클래스로 생성된 객체는 Thenable이다.
+async await 함수는 Thenable도 프로미스처럼 처리한다.
